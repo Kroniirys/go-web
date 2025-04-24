@@ -12,10 +12,13 @@
 *.out
 
 # Dependency directories (remove the comment below to include it)
-# vendor/
+vendor/
 
 # Go workspace file
 go.work
+
+# Environment variables
+.env
 
 # IDE specific files
 .idea/
@@ -23,6 +26,6 @@ go.work
 *.swp
 *.swo
 
-# Environment files
-.env
-.env.local 
+# OS specific files
+.DS_Store
+Thumbs.db 
