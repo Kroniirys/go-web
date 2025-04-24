@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/static/css/admin.css">
+</head>
+<body>
+    <div class="admin-container">
+        <nav class="sidebar">
+            <h2>Admin Panel</h2>
+            <ul>
+                <li><a href="/admin/dashboard">Dashboard</a></li>
+                <li><a href="/admin/users">Quản lý người dùng</a></li>
+                <li><a href="/admin/books">Quản lý sách</a></li>
+                <li><a href="/admin/orders">Quản lý đơn hàng</a></li>
+                <li><a href="/admin/logs" class="active">Nhật ký hoạt động</a></li>
+                <li><a href="/admin/logout">Đăng xuất</a></li>
+            </ul>
+        </nav>
+
+        <main class="content">
+            <h1 class="text-header">Nhật ký hoạt động</h1>
+            <div class="recent-logs">
+                <h2>Hoạt động gần đây</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>AdminID</th>
+                            <th>Thời gian</th>
+                            <th>Hành động</th>
+                            <th>Chi tiết</th>
+                            <th>IP</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{range .RecentLogs}}
+                        <tr>
+                            <td>{{.AdminID}}</td>
+                            <td>{{.CreatedAt.Format "02/01/2006 15:04:05"}}</td>
+                            <td>{{.Action}}</td>
+                            <td>{{.Details}}</td>
+                            <td>{{.IPAddress}}</td>
+                        </tr>
+                        {{end}}
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+</body>
+</html> 

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Đăng ký</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/register.css">
+</head>
+<body>
+    <div class="register-container">
+        <div class="register-banner">
+            <img src="/static/images/logo.png" alt="register-banner">
+        </div>
+        <div class="register-form">
+            <h1>Đăng ký</h1>
+            <form method="POST" id="registerForm">
+                <!-- Bước 1: Thông tin cơ bản -->
+                <div class="form-step active" id="step1">
+                    <div class="form-group">
+                        <label>Tên người dùng:</label>
+                        <input type="text" name="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email:</label>
+                        <input type="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Mật khẩu:</label>
+                        <input type="password" name="password" required>
+                    </div>
+                    <button type="button" onclick="nextStep()">Tiếp tục</button>
+                </div>
+
+                <!-- Bước 2: Thông tin bổ sung -->
+                <div class="form-step" id="step2">
+                    <div class="form-group">
+                        <label>Ngày sinh:</label>
+                        <input type="date" name="birthday" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Giới tính:</label>
+                        <select name="gender" required>
+                            <option value="">Chọn giới tính</option>
+                            <option value="male">Nam</option>
+                            <option value="female">Nữ</option>
+                            <option value="other">Khác</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Số CCCD:</label>
+                        <input type="text" name="cccd" required pattern="[0-9]{12}" title="Số CCCD phải có 12 chữ số">
+                    </div>
+                    <div class="form-group">
+                        <button type="button" onclick="prevStep()">Quay lại</button>
+                        <button type="submit">Hoàn tất đăng ký</button>
+                    </div>
+                </div>
+            </form>
+            <p>Đã có tài khoản? <a href="/login">Đăng nhập</a></p>
+        </div>
+    </div>
+
+    <script>
+        function nextStep() {
+            const step1 = document.getElementById('step1');
+            const step2 = document.getElementById('step2');
+            
+            // Kiểm tra dữ liệu bước 1
+            const username = document.querySelector('input[name="username"]').value;
+            const email = document.querySelector('input[name="email"]').value;
+            const password = document.querySelector('input[name="password"]').value;
+            
+            if (!username || !email || !password) {
+                alert('Vui lòng điền đầy đủ thông tin');
+                return;
+            }
+
+            // Thêm class hidden cho step1
+            step1.classList.add('hidden');
+            
+            // Sau khi animation kết thúc, ẩn step1 và hiện step2
+            setTimeout(() => {
+                step1.classList.remove('active');
+                step2.classList.add('active');
+            }, 300);
+        }
+
+        function prevStep() {
+            const step1 = document.getElementById('step1');
+            const step2 = document.getElementById('step2');
+            
+            // Thêm class hidden cho step2
+            step2.classList.add('hidden');
+            
+            // Sau khi animation kết thúc, ẩn step2 và hiện step1
+            setTimeout(() => {
+                step2.classList.remove('active');
+                step1.classList.remove('hidden');
+                step1.classList.add('active');
+            }, 300);
+        }
+    </script>
+</body>
+</html> 

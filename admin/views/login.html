@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Đăng nhập Admin</title>
+    <link rel="stylesheet" href="/static/css/admin.css">
+</head>
+<body class="login-page">
+    <div class="login-container">
+        <div class="login-box">
+            <h1>Đăng nhập Admin</h1>
+            <form method="POST" action="/admin/login">
+                <div class="form-group">
+                    <label>Tên đăng nhập:</label>
+                    <input type="text" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label>Mật khẩu:</label>
+                    <input type="password" name="password" required>
+                </div>
+                <button type="submit">Đăng nhập</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html> 
